@@ -47,4 +47,3 @@ next-env.d.ts
 
 # Local caches and transient tooling
 *.tsbuildinfo
-.openai/
