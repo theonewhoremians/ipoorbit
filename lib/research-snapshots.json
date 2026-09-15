@@ -1,0 +1,391 @@
+[
+  {
+    "id": "national-stock-exchange-of-india",
+    "name": "National Stock Exchange of India",
+    "date": "15 Sep 2026",
+    "source": "https://www.ipomarket.in/ipo/national-stock-exchange-of-india",
+    "verdict": "Wait for disclosures",
+    "summary": "The company’s familiarity and issue size do not establish an attractive entry price. The available detail feed lacks its own comparable financial table and reports an OFS amount above the stated issue size.",
+    "strengths": [
+      "The snapshot provides an announced price band and lot size for further research."
+    ],
+    "risks": [
+      "The source reports ₹22,561.57 Cr total issue size but ₹26,579.64 Cr OFS, an unresolved inconsistency.",
+      "A peer’s P/E is not the issuer’s P/E; the required issuer earnings data is absent from this detail feed."
+    ],
+    "nextStep": "Reconcile the RHP share count and OFS value, obtain current issuer financials, and evaluate regulatory and trading-volume exposure before forming a view.",
+    "metrics": [
+      {
+        "label": "Price band",
+        "value": "₹1,700 – ₹1,785"
+      },
+      {
+        "label": "Financial history",
+        "value": "Incomplete"
+      }
+    ],
+    "coverage": "Limited disclosure data"
+  },
+  {
+    "id": "hero-motors",
+    "name": "Hero Motors",
+    "date": "15 Sep 2026",
+    "source": "https://www.ipomarket.in/ipo/hero-motors",
+    "verdict": "Valuation caution",
+    "summary": "Earnings are improving faster than sales, but the reported earnings multiple leaves limited room for disappointment. The growth story deserves examination; the entry valuation needs a separate test.",
+    "strengths": [
+      "FY26 profit and operating cash flow improved over FY25.",
+      "Revenue increased across the three reported years."
+    ],
+    "risks": [
+      "The source reports a 78.10× FY26 P/E despite comparatively modest sales growth.",
+      "Customer concentration and foreign-currency exposure can make results less predictable."
+    ],
+    "nextStep": "Compare the offer valuation with genuinely comparable powertrain businesses and test whether recent profit margins can persist.",
+    "metrics": [
+      {
+        "label": "FY26 revenue",
+        "value": "₹1,188.35 Cr"
+      },
+      {
+        "label": "FY26 profit (PAT)",
+        "value": "₹41.17 Cr"
+      },
+      {
+        "label": "Revenue growth · FY26 vs FY25",
+        "value": "9.1%"
+      },
+      {
+        "label": "Net profit margin · FY26",
+        "value": "3.5%"
+      }
+    ],
+    "coverage": "Source-reported FY24–FY26 figures; not independently audited"
+  },
+  {
+    "id": "ss-retail",
+    "name": "SS Retail",
+    "date": "15 Sep 2026",
+    "source": "https://www.ipomarket.in/ipo/ss-retail",
+    "verdict": "Valuation caution",
+    "summary": "The reported sales and profit trajectory is strong. However, a thin net margin and substantial mobile-phone exposure make the business sensitive to weaker demand and execution setbacks.",
+    "strengths": [
+      "FY26 revenue and profit both grew materially from FY25.",
+      "The source reports positive earnings in all three years."
+    ],
+    "risks": [
+      "Reported FY26 P/E is 47.11×; a growth slowdown would make that valuation harder to justify.",
+      "Mobile-phone retailing accounts for 86.18% of revenue in the source."
+    ],
+    "nextStep": "Review store productivity, inventory turnover and sustainable margins before judging whether the valuation compensates for retail concentration.",
+    "metrics": [
+      {
+        "label": "FY26 revenue",
+        "value": "₹2,351.03 Cr"
+      },
+      {
+        "label": "FY26 profit (PAT)",
+        "value": "₹59.28 Cr"
+      },
+      {
+        "label": "Revenue growth · FY26 vs FY25",
+        "value": "47.1%"
+      },
+      {
+        "label": "Net profit margin · FY26",
+        "value": "2.5%"
+      }
+    ],
+    "coverage": "Source-reported FY24–FY26 figures; not independently audited"
+  },
+  {
+    "id": "jindal-supreme-india",
+    "name": "Jindal Supreme (India)",
+    "date": "15 Sep 2026",
+    "source": "https://www.ipomarket.in/ipo/jindal-supreme",
+    "verdict": "Wait for disclosures",
+    "summary": "The issue terms alone are not enough to judge business quality or valuation. A verified financial history was not available when this snapshot was prepared.",
+    "strengths": [
+      "An IPO source page is available for document-led research."
+    ],
+    "risks": [
+      "Revenue, cash flow, debt and valuation have not been verified in this snapshot."
+    ],
+    "nextStep": "Obtain the latest prospectus and financial statements before considering an application.",
+    "metrics": [
+      {
+        "label": "Price band",
+        "value": "₹88 – ₹93"
+      },
+      {
+        "label": "Financial history",
+        "value": "Incomplete"
+      }
+    ],
+    "coverage": "Limited disclosure data"
+  },
+  {
+    "id": "sonaselection-india",
+    "name": "Sonaselection India",
+    "date": "15 Sep 2026",
+    "source": "https://www.ipomarket.in/ipo/sonaselection-india",
+    "verdict": "Wait for disclosures",
+    "summary": "Rapid accounting growth is offset by negative operating cash flow. The source also contains an inconsistent fresh-issue figure, so the offer structure needs verification before an investment view is formed.",
+    "strengths": [
+      "Reported sales and profit rose substantially in FY26."
+    ],
+    "risks": [
+      "Operating cash flow was negative in FY25 and FY26.",
+      "The source’s fresh-issue amount does not reconcile with its total issue size; EPS and P/E are unavailable."
+    ],
+    "nextStep": "Wait for the RHP to resolve issue-size units and dilution, then examine working-capital needs and cash conversion.",
+    "metrics": [
+      {
+        "label": "FY26 revenue",
+        "value": "₹516.95 Cr"
+      },
+      {
+        "label": "FY26 profit (PAT)",
+        "value": "₹34.02 Cr"
+      },
+      {
+        "label": "Revenue growth · FY26 vs FY25",
+        "value": "63.6%"
+      },
+      {
+        "label": "Net profit margin · FY26",
+        "value": "6.6%"
+      }
+    ],
+    "coverage": "Source-reported FY24–FY26 figures; not independently audited"
+  },
+  {
+    "id": "a-one-steels-india",
+    "name": "A-One Steels India",
+    "date": "15 Sep 2026",
+    "source": "https://www.ipomarket.in/ipo/a-one-steels-india",
+    "verdict": "Wait for disclosures",
+    "summary": "The FY26 earnings recovery is notable, but the preceding profit decline makes a single-year rebound an unreliable basis for valuation. A final price band is also missing.",
+    "strengths": [
+      "FY26 sales recovered and reported profit exceeded both earlier years."
+    ],
+    "risks": [
+      "PAT fell from ₹38.91 Cr in FY24 to ₹7.71 Cr in FY25 before rebounding.",
+      "No final price band or earnings multiple is available in this snapshot."
+    ],
+    "nextStep": "Wait for pricing and evaluate normalized earnings across the steel cycle, including debt, raw-material exposure and capacity utilization.",
+    "metrics": [
+      {
+        "label": "FY26 revenue",
+        "value": "₹4,148.57 Cr"
+      },
+      {
+        "label": "FY26 profit (PAT)",
+        "value": "₹127.41 Cr"
+      },
+      {
+        "label": "Revenue growth · FY26 vs FY25",
+        "value": "17.1%"
+      },
+      {
+        "label": "Net profit margin · FY26",
+        "value": "3.1%"
+      }
+    ],
+    "coverage": "Source-reported FY24–FY26 figures; not independently audited"
+  },
+  {
+    "id": "spectraa-technology-solutions",
+    "name": "SpectraA Technology Solutions",
+    "date": "15 Sep 2026",
+    "source": "https://www.ipomarket.in/ipo/spectraa-technology-solutions",
+    "verdict": "Wait for disclosures",
+    "summary": "The financial table shows stronger earnings and positive operating cash flow. However, the fresh-issue and OFS figures in the same source are internally inconsistent, preventing a reliable assessment of dilution.",
+    "strengths": [
+      "FY26 sales, profit and operating cash flow improved over FY25.",
+      "The financial table reports a 10.30× FY26 P/E."
+    ],
+    "risks": [
+      "The reported offer components do not reconcile with the total issue size.",
+      "The source flags customer concentration and potential equity dilution."
+    ],
+    "nextStep": "Verify the share count and fresh-issue/OFS split in the RHP before relying on the apparent earnings multiple.",
+    "metrics": [
+      {
+        "label": "FY26 revenue",
+        "value": "₹101.16 Cr"
+      },
+      {
+        "label": "FY26 profit (PAT)",
+        "value": "₹11.56 Cr"
+      },
+      {
+        "label": "Revenue growth · FY26 vs FY25",
+        "value": "34.6%"
+      },
+      {
+        "label": "Net profit margin · FY26",
+        "value": "11.4%"
+      }
+    ],
+    "coverage": "Source-reported FY24–FY26 figures; not independently audited"
+  },
+  {
+    "id": "kheria-autocomp",
+    "name": "Kheria Autocomp",
+    "date": "15 Sep 2026",
+    "source": "https://www.ipomarket.in/ipo/kheria-autocomp",
+    "verdict": "Wait for disclosures",
+    "summary": "The issue terms alone are not enough to judge business quality or valuation. A verified financial history was not available when this snapshot was prepared.",
+    "strengths": [
+      "An IPO source page is available for document-led research."
+    ],
+    "risks": [
+      "Revenue, cash flow, debt and valuation have not been verified in this snapshot."
+    ],
+    "nextStep": "Obtain the latest prospectus and financial statements before considering an application.",
+    "metrics": [
+      {
+        "label": "Price band",
+        "value": "₹96 – ₹101"
+      },
+      {
+        "label": "Financial history",
+        "value": "Incomplete"
+      }
+    ],
+    "coverage": "Limited disclosure data"
+  },
+  {
+    "id": "axiom-gas-engineering",
+    "name": "Axiom Gas Engineering",
+    "date": "15 Sep 2026",
+    "source": "https://www.ipomarket.in/ipo/axiom-gas-engineering",
+    "verdict": "Worth researching",
+    "summary": "The reported operating trend merits further research: revenue and profit increased, operating cash flow exceeded profit, and borrowings declined slightly. This is a research priority, not an application recommendation.",
+    "strengths": [
+      "FY26 operating cash flow of ₹10.80 Cr exceeded reported PAT of ₹9.45 Cr.",
+      "Borrowings declined from ₹16.30 Cr to ₹16.06 Cr while net worth increased."
+    ],
+    "risks": [
+      "Three suppliers account for 99.75% of procurement according to the source.",
+      "LPG transport hazards and related-party transport arrangements require scrutiny; EPS and P/E are missing."
+    ],
+    "nextStep": "Prioritize valuation, supplier contracts, related-party terms and safety compliance. Consider an application only after those gaps are resolved.",
+    "metrics": [
+      {
+        "label": "FY26 revenue",
+        "value": "₹100.76 Cr"
+      },
+      {
+        "label": "FY26 profit (PAT)",
+        "value": "₹9.45 Cr"
+      },
+      {
+        "label": "Revenue growth · FY26 vs FY25",
+        "value": "12.2%"
+      },
+      {
+        "label": "Net profit margin · FY26",
+        "value": "9.4%"
+      }
+    ],
+    "coverage": "Source-reported FY24–FY26 figures; not independently audited"
+  },
+  {
+    "id": "robokidz-eduventures",
+    "name": "Robokidz Eduventures",
+    "date": "15 Sep 2026",
+    "source": "https://www.ipomarket.in/ipo/robokidz-eduventures",
+    "verdict": "Wait for disclosures",
+    "summary": "Sales and profit are growing rapidly, but three consecutive years of negative operating cash flow weaken the quality of that growth. The available data does not support a confident application view.",
+    "strengths": [
+      "Reported sales and profit increased in each of the three financial years."
+    ],
+    "risks": [
+      "FY26 operating cash flow was negative ₹5.10 Cr against positive PAT of ₹10.06 Cr.",
+      "Cash flow was also negative in FY24 and FY25; valuation metrics are missing."
+    ],
+    "nextStep": "Investigate receivables, customer payment cycles and working-capital funding, then obtain post-issue EPS and valuation.",
+    "metrics": [
+      {
+        "label": "FY26 revenue",
+        "value": "₹93.22 Cr"
+      },
+      {
+        "label": "FY26 profit (PAT)",
+        "value": "₹10.06 Cr"
+      },
+      {
+        "label": "Revenue growth · FY26 vs FY25",
+        "value": "58.7%"
+      },
+      {
+        "label": "Net profit margin · FY26",
+        "value": "10.8%"
+      }
+    ],
+    "coverage": "Source-reported FY24–FY26 figures; not independently audited"
+  },
+  {
+    "id": "fx-multitech",
+    "name": "FX Multitech",
+    "date": "15 Sep 2026",
+    "source": "https://www.ipomarket.in/ipo/fx-multitech",
+    "verdict": "Wait for disclosures",
+    "summary": "The issue terms alone are not enough to judge business quality or valuation. A verified financial history was not available when this snapshot was prepared.",
+    "strengths": [
+      "An IPO source page is available for document-led research."
+    ],
+    "risks": [
+      "Revenue, cash flow, debt and valuation have not been verified in this snapshot."
+    ],
+    "nextStep": "Obtain the latest prospectus and financial statements before considering an application.",
+    "metrics": [
+      {
+        "label": "Price band",
+        "value": "Not verified"
+      },
+      {
+        "label": "Financial history",
+        "value": "Incomplete"
+      }
+    ],
+    "coverage": "Limited disclosure data"
+  },
+  {
+    "id": "s-k-offset",
+    "name": "S.K.Offset",
+    "date": "15 Sep 2026",
+    "source": "https://www.ipomarket.in/ipo/s-k-offset",
+    "verdict": "Wait for disclosures",
+    "summary": "The latest year shows a large improvement in profit relative to sales. Without EPS, pricing multiples and cash-flow information, it is premature to treat the margin expansion as sustainable value.",
+    "strengths": [
+      "FY26 sales and PAT both increased from FY25."
+    ],
+    "risks": [
+      "Profit rose from a small base, magnifying the percentage increase.",
+      "The source flags customer concentration; EPS, P/E and operating cash flow are missing."
+    ],
+    "nextStep": "Verify the fresh-issue amount, repeatability of margins and customer commitments in the prospectus before assessing valuation.",
+    "metrics": [
+      {
+        "label": "FY26 revenue",
+        "value": "₹66.67 Cr"
+      },
+      {
+        "label": "FY26 profit (PAT)",
+        "value": "₹7.48 Cr"
+      },
+      {
+        "label": "Revenue growth · FY26 vs FY25",
+        "value": "38.3%"
+      },
+      {
+        "label": "Net profit margin · FY26",
+        "value": "11.2%"
+      }
+    ],
+    "coverage": "Source-reported FY24–FY26 figures; not independently audited"
+  }
+]

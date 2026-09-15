@@ -1,0 +1,3 @@
+import {load} from 'cheerio';
+const sites=['https://eventions.in/','https://anawilvapi.in/home.php','https://www.veritasfin.in/media-kit.php','https://www.hgsindia.com/','https://ssmobile.com/aboutus/investor/','https://jindalsupreme.com/','https://www.zepto.com/'];
+await Promise.allSettled(sites.map(async url=>{try {const r=await fetch(url,{signal:AbortSignal.timeout(16000)});const $=load(await r.text());console.log(JSON.stringify({url,images:$('img,link[rel="icon"]').map((_,e)=>({src:$(e).attr('src')||$(e).attr('href')||$(e).attr('data-src'),alt:$(e).attr('alt')})).get().filter(x=>x.src).slice(0,8)}));}catch(e){console.log(url+' '+e.message)}}));

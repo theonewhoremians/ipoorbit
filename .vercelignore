@@ -1,0 +1,10 @@
+node_modules
+.next
+.vinext
+.wrangler
+dist
+work
+.sites-runtime
+.openai
+*.tsbuildinfo
+.git
