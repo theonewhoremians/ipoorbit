@@ -18,4 +18,4 @@ export const snapshot: IPO[] = rows.map(([name,board,open,close,low,high,size,lo
 export const snapshotDate='2026-09-15T10:00:00.000Z';
 export const money=(n:number|null)=>n===null?'To be announced':'₹'+n.toLocaleString('en-IN');
 export const dateLabel=(s:string)=>s?new Date(s+'T00:00:00').toLocaleDateString('en-IN',{day:'numeric',month:'short'}):'To be announced';
-export function issueStatus(p:IPO){if(!p.open)return 'Pipeline'; const today=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Kolkata'}).format(new Date());return today<p.open?'Upcoming':today<=p.close?'Open now':'Closed';}
+export function issueStatus(p:IPO,now=new Date()){const today=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Kolkata'}).format(now);if(p.close&&today>p.close)return 'Closed';if(!p.open)return 'Pipeline';return today<p.open?'Upcoming':'Open now';}

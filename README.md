@@ -48,3 +48,11 @@ Run `node scripts/check-research.mjs` to check research records and local logo r
 ## Vercel deployment
 
 `vercel.json` selects the Next.js production build (`next build`) and preserves the existing local development command. Import this GitHub repository into Vercel with the project root as its root directory. No environment variables or API keys are required. The API routes run as server functions; source outages use the saved IPO snapshot or show an unavailable message.
+
+## Automatic updates
+
+Upcoming and currently open IPO feeds are fetched together every five minutes while the page is open, and when the visitor returns to the tab or reconnects. New source records appear without a code change. Closed issues are removed after their closing date in Asia/Kolkata, including from dated fallback data. The browser checks expiry every 30 seconds. The calendar starts at the current month. News refreshes every five minutes; AI research remains explicitly dated as requested.
+
+The logo endpoint resolves company branding automatically from company detail pages and official-site icons; existing verified images provide a fallback. Results are cached for up to a day and the browser refreshes them hourly. If a publisher provides no company website/logo or blocks access, initials appear rather than an unrelated logo. No API key, scheduled job or manual card creation is required. Coverage and arrival timing still depend on the public source; this is not a guaranteed exhaustive exchange feed.
+
+`node scripts/check-auto-updates.mjs` verifies new-company parsing and the Indian-time closing boundary.

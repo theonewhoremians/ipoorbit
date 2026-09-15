@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import ts from 'typescript';
+import fs from 'node:fs/promises';
+await fs.mkdir('work',{recursive:true});
+for(const name of ['ipo-feed','ipos'])await fs.writeFile('work/'+name+'.mjs',ts.transpile((await fs.readFile('lib/'+name+'.ts','utf8')),{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022}));
+const {parseIPOFeed}=await import('../work/ipo-feed.mjs');
+const {issueStatus}=await import('../work/ipos.mjs');
+const html='<h1>Open IPOs</h1><section><h3>SME IPOs</h3><table><thead><tr><th>Company</th><th>Status</th><th>Open</th><th>Close</th><th>Price Band</th><th>Lot Size</th></tr></thead><tbody><tr><td><a href="/ipo/new-company"><span>NC</span><span>New Company</span></a></td><td>OPEN</td><td>15 Sep 2026</td><td>16 Sep 2026⏱1d left</td><td>₹100 – ₹110</td><td>1,200</td></tr></tbody></table></section>';
+const [p]=parseIPOFeed(html,'https://www.ipomarket.in/ipo/open');
+assert.equal(p.name,'New Company');assert.equal(p.board,'SME');assert.equal(p.close,'2026-09-16');assert.equal(p.lot,1200);assert.equal(p.high,110);
+assert.equal(issueStatus(p,new Date('2026-09-16T18:29:59Z')),'Open now');assert.equal(issueStatus(p,new Date('2026-09-16T18:30:00Z')),'Closed');
+assert.equal(issueStatus({...p,open:'',close:''}),'Pipeline');assert.throws(()=>parseIPOFeed('<h1>Blocked</h1>','https://www.ipomarket.in/ipo/open'));
+console.log('New company parsing, SME board, countdown dates, lot size and IST closing boundary pass.');
