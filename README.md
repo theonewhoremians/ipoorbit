@@ -56,3 +56,5 @@ Upcoming and currently open IPO feeds are fetched together every five minutes wh
 The logo endpoint resolves company branding automatically from company detail pages and official-site icons; existing verified images provide a fallback. Results are cached for up to a day and the browser refreshes them hourly. If a publisher provides no company website/logo or blocks access, initials appear rather than an unrelated logo. No API key, scheduled job or manual card creation is required. Coverage and arrival timing still depend on the public source; this is not a guaranteed exhaustive exchange feed.
 
 `node scripts/check-auto-updates.mjs` verifies new-company parsing and the Indian-time closing boundary.
+
+GMP is shown on every card and in company details as a rupee premium and percentage of the upper price band. Missing quotes remain unavailable; zero and negative quotes are preserved. GMP is unofficial and is not a promised listing return. Issue sizes retain source qualifiers (such as estimated or fresh issue); missing totals are supplemented from the issuer's source page where published. Both fields follow the five-minute feed refresh.

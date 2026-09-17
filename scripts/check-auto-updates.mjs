@@ -11,3 +11,9 @@ assert.equal(p.name,'New Company');assert.equal(p.board,'SME');assert.equal(p.cl
 assert.equal(issueStatus(p,new Date('2026-09-16T18:29:59Z')),'Open now');assert.equal(issueStatus(p,new Date('2026-09-16T18:30:00Z')),'Closed');
 assert.equal(issueStatus({...p,open:'',close:''}),'Pipeline');assert.throws(()=>parseIPOFeed('<h1>Blocked</h1>','https://www.ipomarket.in/ipo/open'));
 console.log('New company parsing, SME board, countdown dates, lot size and IST closing boundary pass.');
+const metricHtml=html.replace('<th>Lot Size</th>','<th>Lot Size</th><th>GMP</th><th>Issue Size</th>').replace('<td>1,200</td>','<td>1,200</td><td>GMP ₹0 (0%)</td><td>₹3,668 Cr (₹2,100 Cr fresh + ₹1,568 Cr OFS)</td>');
+const [zero]=parseIPOFeed(metricHtml,'https://www.ipomarket.in/ipo/open');assert.equal(zero.gmp,0);assert.equal(zero.size,3668);
+const [negative]=parseIPOFeed(metricHtml.replace('₹0 (0%)','₹-10 (-9.09%)'),'https://www.ipomarket.in/ipo/open');assert.equal(negative.gmp,-10);
+const [missing]=parseIPOFeed(metricHtml.replace('GMP ₹0 (0%)','—'),'https://www.ipomarket.in/ipo/open');assert.equal(missing.gmp,null);
+console.log('GMP zero, negative and missing values; issue-size breakdown parsing pass.');
+const tagged=html.replace('<span>New Company</span>','<span><span>New Company</span><span><span>Others</span></span></span>');assert.equal(parseIPOFeed(tagged,'https://www.ipomarket.in/ipo/open')[0].name,'New Company');

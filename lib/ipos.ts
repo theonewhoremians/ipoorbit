@@ -1,4 +1,4 @@
-export type IPO = { id:string; name:string; board:string; open:string; close:string; low:number|null; high:number|null; size:number|null; lot:number|null; sector:string; source:string };
+export type IPO = { id:string; name:string; board:string; open:string; close:string; low:number|null; high:number|null; size:number|null; sizeLabel?:string; gmp?:number|null; lot:number|null; sector:string; source:string };
 const rows: [string,string,string,string,number|null,number|null,number|null,number|null,string][] = [
  ['National Stock Exchange of India','Mainboard','2026-09-17','2026-09-21',1700,1785,22561.57,8,'Financial services'],
  ['Hero Motors','Mainboard','2026-09-16','2026-09-18',79,84,1000,178,'Automotive'],
@@ -19,3 +19,6 @@ export const snapshotDate='2026-09-15T10:00:00.000Z';
 export const money=(n:number|null)=>n===null?'To be announced':'₹'+n.toLocaleString('en-IN');
 export const dateLabel=(s:string)=>s?new Date(s+'T00:00:00').toLocaleDateString('en-IN',{day:'numeric',month:'short'}):'To be announced';
 export function issueStatus(p:IPO,now=new Date()){const today=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Kolkata'}).format(now);if(p.close&&today>p.close)return 'Closed';if(!p.open)return 'Pipeline';return today<p.open?'Upcoming':'Open now';}
+
+export const gmpLabel=(p:IPO)=>p.gmp==null?'Not available':money(p.gmp)+(p.high?` (${p.gmp>0?'+':''}${(p.gmp/p.high*100).toFixed(2)}%)`: "");
+export const sizeLabel=(p:IPO)=>p.sizeLabel||(p.size!=null?money(p.size)+' Cr':'Not announced');
