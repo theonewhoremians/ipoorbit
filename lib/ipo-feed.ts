@@ -29,17 +29,18 @@ export function parseIPOFeed(html:string,source:string):IPO[]{
 export function parseIPOOfferDetails(html:string):Partial<IPO>{
  const $=load(html);
  const amount=(raw:string):number|null=>{
-  const match=raw.replace(/,/g,'').match(/(?:₹|Rs\.?\s*)(\d+(?:\.\d+)?)\s*(?:Cr|crores?)/i);
+  if(/^\s*(?:nil|none|no\s+(?:fresh\s+)?issue|0+(?:\.0+)?(?:\s*(?:Cr|crores?))?)\s*$/i.test(raw))return 0;
+  const match=raw.replace(/,/g,'').match(/(?:₹|Rs\.?\s*)?(\d+(?:\.\d+)?)\s*(?:Cr|crores?)/i);
   return match?Number(match[1]):null;
  };
  let size:number|null=null,freshIssue:number|null=null,ofsIssue:number|null=null;
  let sizeLabel:string|undefined;
  $('tr').each((_,row)=>{
   const cells=$(row).find('td,th');if(cells.length!==2)return;
-  const key=cells.eq(0).text().trim(),value=cells.eq(1).text().trim(),parsed=amount(value);
-  if(/^(?:Total )?Issue Size$/i.test(key)&&parsed!=null){size=parsed;sizeLabel=value;}
-  else if(/^Fresh Issue(?: Size)?$/i.test(key))freshIssue=parsed;
-  else if(/^(?:OFS|Offer for Sale)(?: Size)?$/i.test(key))ofsIssue=parsed;
+  const key=cells.eq(0).text().replace(/\([^)]*\)/g,' ').replace(/\s+/g,' ').trim(),value=cells.eq(1).text().trim(),parsed=amount(value);
+  if(/^(?:Total )?Issue Size(?: in .*)?$/i.test(key)&&parsed!=null){size=parsed;sizeLabel=value;}
+  else if(/^Fresh Issue(?: Size)?(?: in .*)?$/i.test(key))freshIssue=parsed;
+  else if(/^(?:OFS|Offer for Sale)(?: Size)?(?: in .*)?$/i.test(key))ofsIssue=parsed;
  });
  const fullText=$('body').text().replace(/\s+/g,' ').trim();
  const quotaStart=fullText.search(/Investor Quota/i);
