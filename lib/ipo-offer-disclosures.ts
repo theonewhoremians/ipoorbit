@@ -22,8 +22,8 @@ const disclosures:Record<string,OfferDisclosure>={
 
 export function applyIPOOfferDisclosure(ipo:IPO):IPO{
  const disclosure=disclosures[ipo.id];
- if(!disclosure||ipo.issueType||ipo.size==null||Math.abs(ipo.size-disclosure.totalSize)>0.6)return ipo;
+ if(!disclosure||ipo.size==null||Math.abs(ipo.size-disclosure.totalSize)>0.6)return ipo;
  if(ipo.freshIssue!=null&&ipo.freshIssue!==disclosure.freshIssue)return ipo;
  if(ipo.ofsIssue!=null&&ipo.ofsIssue!==disclosure.ofsIssue)return ipo;
- return {...ipo,...disclosure};
+ return {...ipo,freshIssue:ipo.freshIssue??disclosure.freshIssue,ofsIssue:ipo.ofsIssue??disclosure.ofsIssue,issueType:ipo.issueType??disclosure.issueType,issueDisclosureDate:ipo.issueDisclosureDate??disclosure.issueDisclosureDate,issueDisclosureUrl:ipo.issueDisclosureUrl??disclosure.issueDisclosureUrl};
 }
