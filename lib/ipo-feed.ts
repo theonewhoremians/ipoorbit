@@ -25,3 +25,39 @@ export function parseIPOFeed(html:string,source:string):IPO[]{
  if(!ipos.length&&!/no (?:\w+ )*IPOs|0 IPOs/i.test($('main').text()))throw Error('Source format changed');
  return ipos;
 }
+
+export function parseIPOOfferDetails(html:string):Partial<IPO>{
+ const $=load(html);
+ const amount=(raw:string):number|null=>{
+  const match=raw.replace(/,/g,'').match(/(?:₹|Rs\.?\s*)(\d+(?:\.\d+)?)\s*(?:Cr|crores?)/i);
+  return match?Number(match[1]):null;
+ };
+ let size:number|null=null,freshIssue:number|null=null,ofsIssue:number|null=null;
+ let sizeLabel:string|undefined;
+ $('tr').each((_,row)=>{
+  const cells=$(row).find('td,th');if(cells.length!==2)return;
+  const key=cells.eq(0).text().trim(),value=cells.eq(1).text().trim(),parsed=amount(value);
+  if(/^(?:Total )?Issue Size$/i.test(key)&&parsed!=null){size=parsed;sizeLabel=value;}
+  else if(/^Fresh Issue(?: Size)?$/i.test(key))freshIssue=parsed;
+  else if(/^(?:OFS|Offer for Sale)(?: Size)?$/i.test(key))ofsIssue=parsed;
+ });
+ const fullText=$('body').text().replace(/\s+/g,' ').trim();
+ const quotaStart=fullText.search(/Investor Quota/i);
+ const quotaEnd=quotaStart<0?-1:fullText.slice(quotaStart+14).search(/Application Lot Sizes/i);
+ const quotaText=quotaStart<0?'':fullText.slice(quotaStart,quotaEnd<0?quotaStart+1200:quotaStart+14+quotaEnd);
+ const quotaMatch=quotaText.match(/\bRetail(?:\s+(?:Individual\s+)?(?:Investors?|Bidders?))?\b[^\d%]{0,24}(\d{1,3}(?:\.\d+)?)\s*%/i);
+ const retailQuotaPercent=quotaMatch?Number(quotaMatch[1]):null;
+ const subStart=fullText.search(/Subscription Status/i);
+ const subTail=subStart<0?'':fullText.slice(subStart+18);
+ const subEnd=subTail.search(/Allotment Statistics|Subscription Details/i);
+ const subText=subStart<0?'':subTail.slice(0,subEnd<0?2200:subEnd);
+ const subscriptionMatch=subText.match(/\bRetail(?:\s+(?:Individual\s+)?(?:Investors?|Bidders?))?\b[^\d.]{0,80}(\d+(?:\.\d+)?)\s*x\b/i);
+ const retailSubscription=subscriptionMatch?Number(subscriptionMatch[1]):null;
+ let issueType:string|null=null;
+ if(freshIssue!=null&&ofsIssue!=null){
+  if(freshIssue>0&&ofsIssue>0)issueType='Hybrid';
+  else if(freshIssue>0&&ofsIssue===0)issueType='Fresh issue';
+  else if(freshIssue===0&&ofsIssue>0)issueType='OFS';
+ }
+ return {size,sizeLabel,freshIssue,ofsIssue,issueType,retailQuotaPercent,retailSubscription};
+}

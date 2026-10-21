@@ -1,4 +1,4 @@
-export type IPO = { id:string; name:string; board:string; open:string; close:string; low:number|null; high:number|null; size:number|null; sizeLabel?:string; gmp?:number|null; lot:number|null; sector:string; source:string };
+export type IPO = { id:string; name:string; board:string; open:string; close:string; low:number|null; high:number|null; size:number|null; sizeLabel?:string; gmp?:number|null; lot:number|null; sector:string; source:string; retailQuotaSize?:number|null; retailQuotaPercent?:number|null; retailSubscription?:number|null; issueType?:string|null; freshIssue?:number|null; ofsIssue?:number|null };
 const rows: [string,string,string,string,number|null,number|null,number|null,number|null,string][] = [
  ['National Stock Exchange of India','Mainboard','2026-09-17','2026-09-21',1700,1785,22561.57,8,'Financial services'],
  ['Hero Motors','Mainboard','2026-09-16','2026-09-18',79,84,1000,178,'Automotive'],
@@ -22,3 +22,6 @@ export function issueStatus(p:IPO,now=new Date()){const today=new Intl.DateTimeF
 
 export const gmpLabel=(p:IPO)=>p.gmp==null?'Not available':money(p.gmp)+(p.high?` (${p.gmp>0?'+':''}${(p.gmp/p.high*100).toFixed(2)}%)`: "");
 export const sizeLabel=(p:IPO)=>p.sizeLabel||(p.size!=null?money(p.size)+' Cr':'Not announced');
+export const retailQuotaLabel=(p:IPO)=>p.retailQuotaSize==null?'Not disclosed':`₹${p.retailQuotaSize.toFixed(2)} Cr${p.retailQuotaPercent==null?'':` (${p.retailQuotaPercent}%)`}`;
+export const retailSubscriptionLabel=(p:IPO)=>p.retailSubscription==null?'Not available':`${p.retailSubscription.toFixed(2)}x`;
+export const issueTypeLabel=(p:IPO)=>!p.issueType?'Not disclosed':p.issueType==='Hybrid'?`Hybrid · Fresh ₹${p.freshIssue?.toFixed(2)??'—'} Cr + OFS ₹${p.ofsIssue?.toFixed(2)??'—'} Cr`:p.issueType==='Fresh issue'?`Fresh issue · ₹${p.freshIssue?.toFixed(2)??'—'} Cr`:`OFS · ₹${p.ofsIssue?.toFixed(2)??'—'} Cr`;
