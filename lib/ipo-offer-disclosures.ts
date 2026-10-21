@@ -21,6 +21,7 @@ const disclosures:Record<string,OfferDisclosure>={
  'sfc-environmental-technologies':{totalSize:667.53,freshIssue:150,ofsIssue:517.53,issueType:'Hybrid',issueDisclosureDate:'2026-10-19',issueDisclosureUrl:'https://sfcenvironment.com/investor/draft-red-herring-prospectus/'},
  'core4-engineers':{totalSize:54.82,freshIssue:54.82,ofsIssue:0,issueType:'Fresh issue',issueDisclosureDate:'2026-10-19',issueDisclosureUrl:'https://core4engineers.com/investors'},
  'eaaa-india-alternatives':{totalSize:1200,freshIssue:0,ofsIssue:1200,issueType:'OFS',issueDisclosureDate:'2026-10-19',issueDisclosureUrl:'https://www.kotakneo.com/news/ipos/eaaa-india-alternatives-ipo-rhp-filed/'},
+ 'zepto':{totalSize:null,freshIssue:8010,ofsShares:113466566,issueType:'Hybrid',issueDisclosureDate:'2026-06-09',issueDisclosureUrl:'https://www.sebi.gov.in/filings/public-issues/jun-2026/zepto-limited-udrhp1_101929.html'},
  'oyo-oravel-stays-prism':{totalSize:6650,freshIssue:6650,ofsIssue:0,issueType:'Fresh issue',issueDisclosureDate:'2026-06-30',issueDisclosureUrl:'https://www.prismlife.com/ipo-kit.html'},
  'hero-fincorp':{totalSize:3358.135,freshIssue:1790.001,ofsIssue:1568.134,issueType:'Hybrid',issueDisclosureDate:'2025-11-17',issueDisclosureUrl:'https://www.sebi.gov.in/sebi_data/attachdocs/nov-2025/1764331093856.pdf',supersedesFeed:true},
  'veritas-finance':{totalSize:2800,freshIssue:600,ofsIssue:2200,issueType:'Hybrid',issueDisclosureDate:'2026-08-03',issueDisclosureUrl:'https://www.sebi.gov.in/filings/public-issues/aug-2026/veritas-finance-limited-drhp_103304.html'},
