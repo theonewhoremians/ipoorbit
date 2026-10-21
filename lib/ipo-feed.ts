@@ -47,12 +47,20 @@ export function parseIPOOfferDetails(html:string):Partial<IPO>{
  const quotaText=quotaStart<0?'':fullText.slice(quotaStart,quotaEnd<0?quotaStart+1200:quotaStart+14+quotaEnd);
  const quotaMatch=quotaText.match(/\bRetail(?:\s+(?:Individual\s+)?(?:Investors?|Bidders?))?\b[^\d%]{0,24}(\d{1,3}(?:\.\d+)?)\s*%/i);
  const retailQuotaPercent=quotaMatch?Number(quotaMatch[1]):null;
+ let retailSubscriptionFromRow:number|null=null;
+ $('tr').each((_,row)=>{
+  const cells=$(row).find('td,th');if(cells.length<2)return;
+  const category=cells.eq(0).text().replace(/\s+/g,' ').trim();
+  if(!/^Retail(?:\s+(?:Individual\s+)?(?:Investors?|Bidders?))?(?:\s*\([^)]*\))?$/i.test(category))return;
+  const match=cells.eq(1).text().trim().match(/(\d+(?:\.\d+)?)\s*x\b/i);
+  if(match)retailSubscriptionFromRow=Number(match[1]);
+ });
  const subStart=fullText.search(/Subscription Status/i);
  const subTail=subStart<0?'':fullText.slice(subStart+18);
  const subEnd=subTail.search(/Allotment Statistics|Subscription Details/i);
  const subText=subStart<0?'':subTail.slice(0,subEnd<0?2200:subEnd);
  const subscriptionMatch=subText.match(/\bRetail(?:\s+(?:Individual\s+)?(?:Investors?|Bidders?))?\b[^\d.]{0,80}(\d+(?:\.\d+)?)\s*x\b/i);
- const retailSubscription=subscriptionMatch?Number(subscriptionMatch[1]):null;
+ const retailSubscription=retailSubscriptionFromRow??(subscriptionMatch?Number(subscriptionMatch[1]):null);
  let issueType:string|null=null;
  if(freshIssue!=null&&ofsIssue!=null){
   if(freshIssue>0&&ofsIssue>0)issueType='Hybrid';
