@@ -24,6 +24,6 @@ export const gmpLabel=(p:IPO)=>p.gmp==null?'Not available':money(p.gmp)+(p.high?
 export const sizeLabel=(p:IPO)=>p.sizeLabel||(p.size!=null?money(p.size)+' Cr':'Not announced');
 export const retailQuotaLabel=(p:IPO)=>p.retailQuotaSize==null?'Not disclosed':`₹${p.retailQuotaSize.toFixed(2)} Cr${p.retailQuotaPercent==null?'':` (${p.retailQuotaPercent}%)`}`;
 export const retailSubscriptionLabel=(p:IPO)=>p.retailSubscription==null?'Not available':`${p.retailSubscription.toFixed(2)}x`;
-const offerAmount=(amount:number|undefined|null,shares:number|undefined|null)=>amount!=null&&(amount>0||shares==null)?(amount===0?'None':`₹${amount.toLocaleString('en-IN',{minimumFractionDigits:2,maximumFractionDigits:2})} Cr`):shares!=null?`${shares.toLocaleString('en-IN')} shares`:'size not disclosed';
+const offerAmount=(amount:number|undefined|null,shares:number|undefined|null)=>amount!=null&&(amount>0||shares==null)?(amount===0?'None':`₹${amount.toLocaleString('en-IN',{minimumFractionDigits:2,maximumFractionDigits:3})} Cr`):shares!=null?`${shares.toLocaleString('en-IN')} shares`:'size not disclosed';
 export const offerAmountLabel=offerAmount;
 export const issueTypeLabel=(p:IPO)=>!p.issueType?'Not verified yet':p.issueType==='Hybrid'?`Hybrid · Fresh ${offerAmount(p.freshIssue,p.freshShares)} + OFS ${offerAmount(p.ofsIssue,p.ofsShares)}`:p.issueType==='Fresh issue'?`Fresh issue · ${offerAmount(p.freshIssue,p.freshShares)}`:`OFS · ${offerAmount(p.ofsIssue,p.ofsShares)}`;

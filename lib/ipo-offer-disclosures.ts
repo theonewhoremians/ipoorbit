@@ -50,7 +50,7 @@ export function applyIPOOfferDisclosure(ipo:IPO):IPO{
  return {
   ...ipo,
   size:replaceSize?disclosure.totalSize:ipo.size,
-  sizeLabel:replaceSize?`₹${disclosure.totalSize!.toLocaleString('en-IN',{minimumFractionDigits:2,maximumFractionDigits:2})} Cr`:ipo.sizeLabel,
+  sizeLabel:replaceSize?`₹${disclosure.totalSize!.toLocaleString('en-IN',{minimumFractionDigits:2,maximumFractionDigits:3})} Cr`:ipo.sizeLabel,
   freshIssue:prefer(ipo.freshIssue,disclosure.freshIssue),
   ofsIssue:prefer(ipo.ofsIssue,disclosure.ofsIssue),
   freshShares:prefer(ipo.freshShares,disclosure.freshShares),
