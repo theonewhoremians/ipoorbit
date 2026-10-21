@@ -69,3 +69,15 @@ export function parseIPOOfferDetails(html:string):Partial<IPO>{
  }
  return {size,sizeLabel,freshIssue,ofsIssue,issueType,retailQuotaPercent,retailSubscription};
 }
+
+export function parseIPOIssueTypeFromLabel(label:string,totalSize:number|null):Partial<IPO>{
+ const fresh=label.match(/(?:₹|Rs\.?\s*)([\d,]+(?:\.\d+)?)\s*Cr\s*fresh(?:\s+issue)?/i);
+ const ofs=label.match(/(?:₹|Rs\.?\s*)([\d,]+(?:\.\d+)?)\s*Cr\s*(?:OFS|offer\s+for\s+sale)/i);
+ const freshIssue=fresh?Number(fresh[1].replace(/,/g,'')):null;
+ const ofsIssue=ofs?Number(ofs[1].replace(/,/g,'')):null;
+ if(freshIssue!=null&&ofsIssue!=null)return {freshIssue,ofsIssue,issueType:'Hybrid'};
+ if(freshIssue!=null)return {freshIssue,issueType:'Fresh issue'};
+ if(ofsIssue!=null&&/\b(?:OFS|offer\s+for\s+sale)\s+issue\b/i.test(label))return {ofsIssue,issueType:'OFS'};
+ if(/\bfresh\s+issue\b/i.test(label)&&!/\bOFS\b/i.test(label))return {freshIssue:totalSize,issueType:'Fresh issue'};
+ return {};
+}

@@ -1,4 +1,4 @@
-import {parseIPOFeed,parseIPOOfferDetails} from '../../../lib/ipo-feed';
+import {parseIPOFeed,parseIPOOfferDetails,parseIPOIssueTypeFromLabel} from '../../../lib/ipo-feed';
 import {snapshot,snapshotDate,issueStatus,type IPO} from '../../../lib/ipos';
 export const dynamic='force-dynamic';
 let cache:{at:number;ipos:IPO[]}|null=null;
@@ -11,8 +11,9 @@ export async function GET(){
  if(successful.length===2){
   const records=new Map<string,IPO>();for(const p of successful.flatMap(r=>r.value)){const old=records.get(p.id);if(old?.open&&!p.open)continue;records.set(p.id,old?{...old,...p,size:p.size??old.size,sizeLabel:p.sizeLabel||old.sizeLabel,lot:p.lot??old.lot}:p);}
   const items=active([...records.values()]);
+  for(const p of items)Object.assign(p,parseIPOIssueTypeFromLabel(p.sizeLabel||'',p.size));
   const detailItems=items.filter(p=>/^https:\/\/www\.ipomarket\.in\/ipo\/[a-z0-9-]+$/.test(p.source)&&!p.source.endsWith('/upcoming'));
-  for(let i=0;i<detailItems.length;i+=8)await Promise.allSettled(detailItems.slice(i,i+8).map(async p=>{try{const r=await fetch(p.source,{redirect:'manual',cache:'no-store',signal:AbortSignal.timeout(6000),headers:{'User-Agent':'IPO-Orbit/1.0'}});if(!r.ok)return;const details=parseIPOOfferDetails(await r.text());Object.assign(p,details);p.size=details.size??p.size;p.sizeLabel=details.sizeLabel||p.sizeLabel;p.retailQuotaSize=details.size!=null&&details.retailQuotaPercent!=null?Number((details.size*details.retailQuotaPercent/100).toFixed(2)):null;}catch{}}));
+  for(let i=0;i<detailItems.length;i+=8)await Promise.allSettled(detailItems.slice(i,i+8).map(async p=>{try{const r=await fetch(p.source,{redirect:'manual',cache:'no-store',signal:AbortSignal.timeout(6000),headers:{'User-Agent':'IPO-Orbit/1.0'}});if(!r.ok)return;const details=parseIPOOfferDetails(await r.text());Object.assign(p,details,{freshIssue:details.freshIssue??p.freshIssue,ofsIssue:details.ofsIssue??p.ofsIssue,issueType:details.issueType??p.issueType});p.size=details.size??p.size;p.sizeLabel=details.sizeLabel||p.sizeLabel;p.retailQuotaSize=details.size!=null&&details.retailQuotaPercent!=null?Number((details.size*details.retailQuotaPercent/100).toFixed(2)):null;}catch{}}));
   cache={at:Date.now(),ipos:items};return reply(cache.ipos,new Date(cache.at).toISOString(),'refreshed','Auto-updates every 5 minutes · closed issues are removed');
  }
  // ponytail: warm-instance fallback only; use persistent storage if a durable feed history is required.
