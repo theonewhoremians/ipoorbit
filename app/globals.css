@@ -33,3 +33,4 @@
 @media(max-width:560px){.detail-dialog{width:calc(100% - 16px);max-height:calc(100dvh - 16px);border-radius:12px}.detail-inner{padding:20px 16px}.detail-actions{gap:10px}.detail-tabs{gap:4px}}
 .gmp-metric strong{color:var(--accent)}.card-metrics>div:nth-child(even){text-align:right}.detail-stats{grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}.card-metrics strong{overflow-wrap:anywhere}
 .card-metrics>.share-issue{grid-column:1/-1;text-align:left!important}
+.detail-stats>div:nth-child(5){grid-column:1/-1;text-align:left!important}
